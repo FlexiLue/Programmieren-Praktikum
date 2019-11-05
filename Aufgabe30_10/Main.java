@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
-        while(true){
+        /*while(true){
             System.out.println("Wählen sie zwischen Option 1 oder Option 2");
             String str = s.nextLine();
 
@@ -88,7 +88,7 @@ public class Main {
 
 
             }
-        }
+        }*/
 
     }
 }

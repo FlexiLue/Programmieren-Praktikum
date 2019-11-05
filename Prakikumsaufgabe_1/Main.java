@@ -5,6 +5,7 @@ public class Main {
         String [] werte = {"Dies", "", "ist", " ", "ein", " ", "Satz", "!"};
         String ausgabe = "Hallo";
         float [] tagesAusgaben = {1.49f,0.7f,2.80f,1.2f,12.34f};
+        int [] a = {1,2,3,4,5,6};
         String test = "regallager";
 
         System.out.println(arrayToString(werte));
@@ -59,5 +60,4 @@ public class Main {
 
         return aussage;
     }
-
 }
