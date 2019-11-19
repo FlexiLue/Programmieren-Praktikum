@@ -18,7 +18,7 @@ public class Lagerverwaltung {
     }
 
 
-    public static int evaluateInput(String str){
+    private static int evaluateInput(String str){
         if(str.equals("/exit")){
             return 1;
         }
