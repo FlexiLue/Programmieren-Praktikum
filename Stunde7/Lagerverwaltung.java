@@ -29,7 +29,7 @@ public class Lagerverwaltung {
         }
     }
 
-    public static void lagertausch(Lager altesLager, Lager neuesLager){
+    public static void lagertauschAll(Lager altesLager, Lager neuesLager){
         for(int i = 0; i < altesLager.produkte.size(); i++){
             neuesLager.produkte.add(altesLager.produkte.get(i));
             neuesLager.lagerbestand.add(altesLager.lagerbestand.get(i));
@@ -37,6 +37,20 @@ public class Lagerverwaltung {
         altesLager.lagerbestand.removeAllElements();
         altesLager.produkte.removeAllElements();
     }
+
+    public static void lagertauschEinzel(Lager altesLager, Lager neuesLager, String produkt){
+        for(int i = 0; i < altesLager.produkte.size(); i++){
+            if(!altesLager.produkte.isEmpty()){
+                if(altesLager.produkte.get(i).equals(produkt)){
+                    neuesLager.produkte.add(produkt);
+                    neuesLager.lagerbestand.add(altesLager.lagerbestand.get(i));
+                    altesLager.produkte.remove(i);
+                    altesLager.lagerbestand.remove(i);
+                }
+            }
+        }
+    }
+
 
 
 

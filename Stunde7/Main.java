@@ -13,8 +13,13 @@ public class Main {
         lager1.getProdukt("Nuss", 4);
         System.out.println(lager1.lagerbestandAusgabe("Nuss"));
 
-        Lagerverwaltung.lagertausch(lager1, lager2);
+        Lagerverwaltung.lagertauschAll(lager1, lager2);
         System.out.println(lager1.lagerbestandAusgabe("Nuss"));
         System.out.println(lager2.lagerbestandAusgabe("Nuss"));
+
+        Lagerverwaltung.lagertauschEinzel(lager2, lager1, "Nuss");
+        System.out.println(lager1.lagerbestandAusgabe("Nuss"));
+
+
     }
 }
