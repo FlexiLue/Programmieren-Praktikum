@@ -3,32 +3,28 @@ package Stunde7;
 import java.util.Vector;
 
 public class Lager {
-    Vector produkt = new Vector();
-    Vector lagerbestand = new Vector();
+    Vector<String> produkte = new Vector();
+    Vector<Integer> lagerbestand = new Vector();
 
-    public void produktHinzufügen(Produkt neuesProdukt, int anzahl){
-        produkt.add(neuesProdukt);
-        for(int i = 0; i < anzahl; i++) {
-            lagerbestand.add(neuesProdukt);
-        }
+    public void produktHinzufügen(String neuesProdukt, int anzahl){
+        //Produkt hinzufügen
+        produkte.add(neuesProdukt);
+        //Anzahl hinzufügen
+        lagerbestand.add(anzahl);
     }
-    public void getProdukt(Produkt produkt, int anzahl){
-        int counter = 0;
-        for(int i = 0; i < lagerbestand.size(); i++){
-            if(lagerbestand.elementAt(i).equals(produkt) && counter < anzahl){
-                lagerbestand.remove(i);
-                counter++;
-            }
-        }
+    public void getProdukt(String produkt, int anzahl){
+        int momentaneAnzahl = lagerbestand.get(produkte.indexOf(produkt));
+        //Berechnung der neuen Anzahl
+        int neueAnzahl = momentaneAnzahl - anzahl;
+        //neue Anzahl einsetzen
+        lagerbestand.set(produkte.indexOf(produkt), neueAnzahl);
     }
 
-    public int lagerbestand(Produkt produkt){
-        int counter = 0;
-        for(int i = 0; i < lagerbestand.size(); i++){
-            if(lagerbestand.elementAt(i).equals(produkt)){
-                counter++;
-            }
+    public String lagerbestandAusgabe(String produkt){
+        if(!lagerbestand.isEmpty()) {
+            int anzahl = lagerbestand.get(produkte.indexOf(produkt));
+            return produkt + " " + anzahl;
         }
-        return counter;
+        return "Dieses Proukt befindet sich nicht im Lager";
     }
 }

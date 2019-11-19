@@ -30,10 +30,12 @@ public class Lagerverwaltung {
     }
 
     public static void lagertausch(Lager altesLager, Lager neuesLager){
-        for(int i = 0; i < altesLager.lagerbestand.size(); i++){
-            neuesLager.lagerbestand.add(altesLager.lagerbestand.elementAt(i));
+        for(int i = 0; i < altesLager.produkte.size(); i++){
+            neuesLager.produkte.add(altesLager.produkte.get(i));
+            neuesLager.lagerbestand.add(altesLager.lagerbestand.get(i));
         }
         altesLager.lagerbestand.removeAllElements();
+        altesLager.produkte.removeAllElements();
     }
 
 
