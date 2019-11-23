@@ -3,6 +3,7 @@ package Stunde7;
 import java.util.Scanner;
 
 public class Lagerverwaltung {
+    Lager lager  = new Lager();
 
     public static void update(){
         Scanner s = new Scanner(System.in);
@@ -42,7 +43,7 @@ public class Lagerverwaltung {
         for(int i = 0; i < altesLager.produkte.size(); i++){
             if(!altesLager.produkte.isEmpty()){
                 if(altesLager.produkte.get(i).equals(produkt)){
-                    neuesLager.produkte.add(produkt);
+                    neuesLager.produkte.add(altesLager.produkte.get(altesLager.getProduktIndexFromString(produkt)));
                     neuesLager.lagerbestand.add(altesLager.lagerbestand.get(i));
                     altesLager.produkte.remove(i);
                     altesLager.lagerbestand.remove(i);

@@ -4,22 +4,24 @@ public class Main {
     public static void main(String [] args){
         //Lagerverwaltung.update();
 
-        Lager lager1  = new Lager();
-        Lager lager2 = new Lager();
+        Lagerverwaltung fuwa1 = new Lagerverwaltung();
+        Lagerverwaltung fuwa2 = new Lagerverwaltung();
 
-        lager1.produktHinzufügen("Nuss", 8);
-        System.out.println(lager1.lagerbestandAusgabe("Nuss"));
+        fuwa1.lager.produktHinzufügen("Nuss", 8);
+        System.out.println("Lager fuwa 1: " + fuwa1.lager.lagerbestandAusgabe("Nuss"));
+        System.out.println("Lager fuwa2: " + fuwa2.lager.lagerbestandAusgabe("Nuss"));
 
-        lager1.getProdukt("Nuss", 4);
-        System.out.println(lager1.lagerbestandAusgabe("Nuss"));
+        fuwa1.lager.getProdukt("Nuss", 4);
+        System.out.println("Lager fuwa1: " + fuwa1.lager.lagerbestandAusgabe("Nuss"));
+        System.out.println("Lager fuwa2: " + fuwa2.lager.lagerbestandAusgabe("Nuss"));
 
-        Lagerverwaltung.lagertauschAll(lager1, lager2);
-        System.out.println(lager1.lagerbestandAusgabe("Nuss"));
-        System.out.println(lager2.lagerbestandAusgabe("Nuss"));
+        Lagerverwaltung.lagertauschAll(fuwa1.lager, fuwa2.lager);
+        System.out.println("Lager fuwa1: " + fuwa1.lager.lagerbestandAusgabe("Nuss"));
+        System.out.println("Lager fuwa2: " + fuwa2.lager.lagerbestandAusgabe("Nuss"));
 
-        Lagerverwaltung.lagertauschEinzel(lager2, lager1, "Nuss");
-        System.out.println(lager1.lagerbestandAusgabe("Nuss"));
-
+        Lagerverwaltung.lagertauschEinzel(fuwa2.lager, fuwa1.lager, "Nuss");
+        System.out.println("Lager fuwa1: " + fuwa1.lager.lagerbestandAusgabe("Nuss"));
+        System.out.println("Lager fuwa2: " + fuwa2.lager.lagerbestandAusgabe("Nuss"));
 
     }
 }
