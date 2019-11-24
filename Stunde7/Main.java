@@ -1,27 +1,40 @@
 package Stunde7;
 
+import java.util.Vector;
+
 public class Main {
     public static void main(String [] args){
-        //Lagerverwaltung.update();
 
         Lagerverwaltung fuwa1 = new Lagerverwaltung();
         Lagerverwaltung fuwa2 = new Lagerverwaltung();
 
-        fuwa1.lager.produktHinzufügen("Nuss", 8);
-        System.out.println("Lager fuwa 1: " + fuwa1.lager.lagerbestandAusgabe("Nuss"));
-        System.out.println("Lager fuwa2: " + fuwa2.lager.lagerbestandAusgabe("Nuss"));
+        fuwa1.update();
 
-        fuwa1.lager.getProdukt("Nuss", 4);
-        System.out.println("Lager fuwa1: " + fuwa1.lager.lagerbestandAusgabe("Nuss"));
-        System.out.println("Lager fuwa2: " + fuwa2.lager.lagerbestandAusgabe("Nuss"));
+        lagertauschEinzel(fuwa1.lager, fuwa2.lager, "Nuss");
+        fuwa2.lager.lagerbestandAusgabe("Nuss");
+        fuwa1.lager.lagerbestandAusgabe("Melonen");
 
-        Lagerverwaltung.lagertauschAll(fuwa1.lager, fuwa2.lager);
-        System.out.println("Lager fuwa1: " + fuwa1.lager.lagerbestandAusgabe("Nuss"));
-        System.out.println("Lager fuwa2: " + fuwa2.lager.lagerbestandAusgabe("Nuss"));
+    }
 
-        Lagerverwaltung.lagertauschEinzel(fuwa2.lager, fuwa1.lager, "Nuss");
-        System.out.println("Lager fuwa1: " + fuwa1.lager.lagerbestandAusgabe("Nuss"));
-        System.out.println("Lager fuwa2: " + fuwa2.lager.lagerbestandAusgabe("Nuss"));
+    public static void lagertauschAll(Lager altesLager, Lager neuesLager){ ;
+        for(int i = 0; i < altesLager.produkte.size(); i++){
+            neuesLager.produkte.add(altesLager.produkte.get(i));
+            neuesLager.lagerbestand.add(altesLager.lagerbestand.get(i));
+        }
+        altesLager.lagerbestand.removeAllElements();
+        altesLager.produkte.removeAllElements();
+    }
 
+    public static void lagertauschEinzel(Lager altesLager, Lager neuesLager, String produkt){
+        for(int i = 0; i < altesLager.produkte.size(); i++){
+            if(!altesLager.produkte.isEmpty()){
+                if(altesLager.produkte.get(i).name.equals(produkt)){
+                    neuesLager.produkte.add(altesLager.produkte.get(i));
+                    neuesLager.lagerbestand.add(altesLager.lagerbestand.get(i));
+                    altesLager.produkte.remove(i);
+                    altesLager.lagerbestand.remove(i);
+                }
+            }
+        }
     }
 }

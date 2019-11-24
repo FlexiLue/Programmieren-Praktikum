@@ -25,21 +25,35 @@ public class Lager {
         lagerbestand.set(produktIndex, neueAnzahl);
     }
 
-    public String lagerbestandAusgabe(String produkt){
+    public void lagerbestandAusgabe(String produkt){
         if(!lagerbestand.isEmpty()) {
             int anzahl = lagerbestand.get(getProduktIndexFromString(produkt));
-            return produkt + " " + anzahl;
+            System.out.println("Es sind " + anzahl + " " + produkte.get(getProduktIndexFromString(produkt)).name + " im Lager vorhanden.");
         }
-        return "Dieses Proukt befindet sich nicht im Lager";
+        else{
+            System.out.println("Das Lager ist leer");
+        }
+    }
+
+    public void lagerbestandAusgabeAll(){
+        if(!lagerbestand.isEmpty()) {
+            for (int i = 0; i < lagerbestand.size(); i++) {
+                String produkt = produkte.get(i).name;
+                int anzahl = lagerbestand.get(i);
+                System.out.println("Produkt: " + produkt + " " + anzahl);
+            }
+        }else{
+            System.out.println("Das Lager ist leer");
+        }
     }
 
     public int getProduktIndexFromString(String produktName){
         int produktIndex = 0;
         for(int i = 0; i < produkte.size(); i++){
             if(produkte.get(i).name.equals(produktName)){
-                produktIndex = produkte.indexOf(i);
+                produktIndex = produkte.indexOf(produkte.elementAt(i));
             }
         }
-        return produktIndex + 1;
+        return produktIndex;
     }
 }

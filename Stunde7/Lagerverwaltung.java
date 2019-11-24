@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Lagerverwaltung {
     Lager lager  = new Lager();
 
-    public static void update(){
+    public void update(){
         Scanner s = new Scanner(System.in);
         while(true){
             String str = s.nextLine();
@@ -15,44 +15,76 @@ public class Lagerverwaltung {
             if(evaluateInput(str) == 2){
                 System.out.println("Hallo");
             }
-        }
-    }
-
-
-    private static int evaluateInput(String str){
-        if(str.equals("/exit")){
-            return 1;
-        }
-        if(str.equals("/hallo")){
-            return 2;
-        }else{
-            return 0;
-        }
-    }
-
-    public static void lagertauschAll(Lager altesLager, Lager neuesLager){
-        for(int i = 0; i < altesLager.produkte.size(); i++){
-            neuesLager.produkte.add(altesLager.produkte.get(i));
-            neuesLager.lagerbestand.add(altesLager.lagerbestand.get(i));
-        }
-        altesLager.lagerbestand.removeAllElements();
-        altesLager.produkte.removeAllElements();
-    }
-
-    public static void lagertauschEinzel(Lager altesLager, Lager neuesLager, String produkt){
-        for(int i = 0; i < altesLager.produkte.size(); i++){
-            if(!altesLager.produkte.isEmpty()){
-                if(altesLager.produkte.get(i).equals(produkt)){
-                    neuesLager.produkte.add(altesLager.produkte.get(altesLager.getProduktIndexFromString(produkt)));
-                    neuesLager.lagerbestand.add(altesLager.lagerbestand.get(i));
-                    altesLager.produkte.remove(i);
-                    altesLager.lagerbestand.remove(i);
+            if(evaluateInput(str) == 3){
+                String Eingabe [] = str.split(" ");
+                if(Eingabe.length == 3) {
+                    String Produkt = Eingabe[1];
+                    int Anzahl = Integer.parseInt(Eingabe[2]);
+                    lager.produktHinzufügen(Produkt, Anzahl);
+                    System.out.println("Es wurden " + Anzahl + " " + Produkt + " dem Lager hinzugefügt.");
+                }else{
+                    System.out.println("Die Syntax ist wie folgt: /hinzufügen [Produktname] [Anzahl]");
                 }
+            }
+            if(evaluateInput(str) == 4){
+                String Eingabe [] = str.split(" ");
+                if(Eingabe.length == 2) {
+                    String Produkt = Eingabe[1];
+                    lager.lagerbestandAusgabe(Produkt);
+                }else{
+                    System.out.println("Die Syntax ist wie folgt: /ausgabe [Produktname]");
+                }
+            }
+            if(evaluateInput(str) == 5){
+                String Eingabe [] = str.split(" ");
+                if(Eingabe.length == 3){
+                    String produkt = Eingabe [1];
+                    int anzahl = Integer.parseInt(Eingabe[2]);
+                    lager.getProdukt(produkt, anzahl);
+                    System.out.println("Es wurden " + anzahl + " " + produkt + " herausgenommen.");
+                }else{
+                    System.out.println("Die Synstax ist wie folgt: /nehmen [Produktname] [Anzahl]");
+                }
+            }
+            if(evaluateInput(str) == 6){
+                String Eingabe [] = str.split(" ");
+                if(Eingabe.length == 4){
+
+                }else{
+                    System.out.println("Die Syntax ist wie folgt: /produkttausch [Lager 1] [Lager 2] [Produktname]");
+                }
+            }
+            if(evaluateInput(str) == 7){
+                lager.lagerbestandAusgabeAll();
             }
         }
     }
 
 
-
-
+    private static int evaluateInput(String str){
+        if(str.contains("/exit")){
+            return 1;
+        }
+        if(str.contains("/hallo")){
+            return 2;
+        }
+        if(str.contains("/hinzufügen")){
+            return 3;
+        }
+        if(str.contains("/ausgabe")){
+            return 4;
+        }
+        if(str.contains("/nehmen")){
+            return 5;
+        }
+        /*if(str.contains("")){
+            return 6;
+        }*/
+        if(str.contains("/lagergesamt")){
+            return 7;
+        }
+        else {
+            return 0;
+        }
+    }
 }
