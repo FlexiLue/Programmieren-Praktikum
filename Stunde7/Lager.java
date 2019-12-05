@@ -7,8 +7,7 @@ public class Lager {
     Vector<Integer> lagerbestand = new Vector();
 
     public void produktHinzufügen(String neuesProdukt, int anzahl){
-        Produkt produkt = new Produkt();
-        produkt.name = neuesProdukt;
+        Produkt produkt = new Produkt(neuesProdukt);
 
         produkte.add(produkt);
         //Anzahl hinzufügen

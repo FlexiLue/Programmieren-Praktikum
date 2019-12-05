@@ -18,5 +18,7 @@ public class Main {
                 }
             }
             System.out.println("maximum: " + maximum + " minimum: " + minimum);
+
     }
+
 }

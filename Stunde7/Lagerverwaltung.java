@@ -49,7 +49,7 @@ public class Lagerverwaltung {
             if(evaluateInput(str) == 6){
                 String Eingabe [] = str.split(" ");
                 if(Eingabe.length == 4){
-
+                    //lagertauschEinzel(Eingabe[1], Eingabe[2], Eingabe[3]);
                 }else{
                     System.out.println("Die Syntax ist wie folgt: /produkttausch [Lager 1] [Lager 2] [Produktname]");
                 }
@@ -85,6 +85,28 @@ public class Lagerverwaltung {
         }
         else {
             return 0;
+        }
+    }
+
+    public static void lagertauschAll(Lager altesLager, Lager neuesLager){ ;
+        for(int i = 0; i < altesLager.produkte.size(); i++){
+            neuesLager.produkte.add(altesLager.produkte.get(i));
+            neuesLager.lagerbestand.add(altesLager.lagerbestand.get(i));
+        }
+        altesLager.lagerbestand.removeAllElements();
+        altesLager.produkte.removeAllElements();
+    }
+
+    public static void lagertauschEinzel(Lager altesLager, Lager neuesLager, String produkt){
+        for(int i = 0; i < altesLager.produkte.size(); i++){
+            if(!altesLager.produkte.isEmpty()){
+                if(altesLager.produkte.get(i).name.equals(produkt)){
+                    neuesLager.produkte.add(altesLager.produkte.get(i));
+                    neuesLager.lagerbestand.add(altesLager.lagerbestand.get(i));
+                    altesLager.produkte.remove(i);
+                    altesLager.lagerbestand.remove(i);
+                }
+            }
         }
     }
 }
