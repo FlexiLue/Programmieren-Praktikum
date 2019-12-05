@@ -89,21 +89,21 @@ public class Lagerverwaltung {
     }
 
     public static void lagertauschAll(Lager altesLager, Lager neuesLager){ ;
-        for(int i = 0; i < altesLager.produkte.size(); i++){
-            neuesLager.produkte.add(altesLager.produkte.get(i));
+        for(int i = 0; i < altesLager.sortiment.size(); i++){
+            neuesLager.sortiment.add(altesLager.sortiment.get(i));
             neuesLager.lagerbestand.add(altesLager.lagerbestand.get(i));
         }
         altesLager.lagerbestand.removeAllElements();
-        altesLager.produkte.removeAllElements();
+        altesLager.sortiment.removeAllElements();
     }
 
     public static void lagertauschEinzel(Lager altesLager, Lager neuesLager, String produkt){
-        for(int i = 0; i < altesLager.produkte.size(); i++){
-            if(!altesLager.produkte.isEmpty()){
-                if(altesLager.produkte.get(i).name.equals(produkt)){
-                    neuesLager.produkte.add(altesLager.produkte.get(i));
+        for(int i = 0; i < altesLager.sortiment.size(); i++){
+            if(!altesLager.sortiment.isEmpty()){
+                if(altesLager.sortiment.get(i).name.equals(produkt)){
+                    neuesLager.sortiment.add(altesLager.sortiment.get(i));
                     neuesLager.lagerbestand.add(altesLager.lagerbestand.get(i));
-                    altesLager.produkte.remove(i);
+                    altesLager.sortiment.remove(i);
                     altesLager.lagerbestand.remove(i);
                 }
             }
